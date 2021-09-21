@@ -19,7 +19,7 @@ class AskChef extends Component {
 
     try {
       const results = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/recipes?ingredients=${e.target.ingredient.value}`
+        `${process.env.REACT_APP_BACKEND_URL2}/recipes?ingredients=${e.target.ingredient.value}`
       );
       this.setState({ recipes: results.data });
       console.log(this.state.recipes);

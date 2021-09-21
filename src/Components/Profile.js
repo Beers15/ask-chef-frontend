@@ -37,7 +37,7 @@ class Profile extends Component {
       headers: { Authorization: `Bearer ${jwt}` },
     };
 
-    const userRecipes = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/recipes/db`, config);
+    const userRecipes = await axios.get(`${process.env.REACT_APP_BACKEND_URL2}/recipes/db`, config);
     this.setState({ recipes: userRecipes.data });
     console.log(this.state.recipes);
   };
