@@ -6,6 +6,7 @@ import axios from 'axios';
 
 class IngredientSearchCard extends Component {
   handleSubmit = async (e) => {
+    console.log(e.target.ingredient.value);
     e.preventDefault();
 
     try {
@@ -26,10 +27,10 @@ class IngredientSearchCard extends Component {
     return (
       <div>
         <Card border="dark" id="askchef-card">
-          <Card.Header id="askchef-header" style={{ fontSize: '2rem' }}>
-            Recipe Search
+          <Card.Header className="card-header" style={{ fontSize: '2rem' }}>
+            Search by Ingredients
           </Card.Header>
-          <Card.Body id="askchef-body" style={{ textAlign: 'center' }}>
+          <Card.Body style={{ textAlign: 'center' }}>
             <Card.Title className="mb-4" style={{ fontSize: '1.7rem' }} id="askchef-title">
               Let the chef know what ingredients you have
             </Card.Title>
@@ -43,7 +44,7 @@ class IngredientSearchCard extends Component {
               </Button>
             </Form>
           </Card.Body>
-          <Card.Footer id="askchef-footer"></Card.Footer>
+          <Card.Footer className="card-footer"></Card.Footer>
         </Card>
       </div>
     );

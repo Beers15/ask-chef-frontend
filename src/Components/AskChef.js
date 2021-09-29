@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RecipeRow from './RecipeRow';
 import Container from 'react-bootstrap/Container';
-import IngredientSearchCard from './IngredientSearchCard';
+import SearchTabs from './SearchTabs';
 import { withAuth0 } from '@auth0/auth0-react';
 
 class AskChef extends Component {
@@ -18,7 +18,7 @@ class AskChef extends Component {
   render() {
     return (
       <div>
-        <IngredientSearchCard setRecipes={this.setRecipes} recipes={this.state.recipes} />
+        <SearchTabs setRecipes={this.setRecipes} recipes={this.state.recipes} />
         {this.state.recipes.length > 0 && (
           <Container>
             {this.state.recipes.map((recipe, index) => {

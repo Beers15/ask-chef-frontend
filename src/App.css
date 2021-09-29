@@ -10,13 +10,11 @@ body {
   padding-right: 1rem;
 }
 
-#askchef-footer,
-#askchef-header,
-#profile-header,
-#profile-footer,
+.card-header,
+.card-footer,
 #update-modal-header,
 #update-modal-footer {
-  background: rgba(93, 104, 89, 0.75);
+  background: rgba(93, 104, 89, 0.75) !important;
   color: white;
 }
 
@@ -49,6 +47,38 @@ p {
   margin-left: 0.25rem;
   padding-left: 0.25rem;
   text-align: justify;
+}
+
+#search-tab-container {
+  width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  border: grey solid 3px;
+}
+
+#search-form-background {
+  object-fit: cover;
+  height: 500px;
+}
+
+#search-tabs {
+  margin-bottom: 2rem;
+}
+
+.search-tab-active {
+  color: rgb(255, 0, 0) !important;
+}
+
+.search-tab, .search-tab-active {
+  width: 180px;
+  background: rgba(93, 104, 89, 0.9);
+  color: white;
+  padding: 10px;
+  margin: 0 3px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
 #about-carousel-container {
@@ -117,7 +147,7 @@ p {
 
 #askchef-card,
 #profile-card {
-  background: rgba(187, 190, 186, 0.65);
+  background: rgba(187, 190, 186, 0.85);
   color: white;
   width: 24rem;
   margin-left: auto;
