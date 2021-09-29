@@ -6,6 +6,11 @@ import Row from 'react-bootstrap/Row';
 
 import axios from 'axios';
 
+
+
+
+import SearchTabs from './SearchTabs';
+
 export default class Landing extends Component {
   constructor(props) {
     super(props);

@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import RecipeRow from './RecipeRow';
 import Container from 'react-bootstrap/Container';
+import SearchTabs from './SearchTabs';
 import { withAuth0 } from '@auth0/auth0-react';
-import axios from 'axios';
 
 class AskChef extends Component {
   constructor(props) {
@@ -14,47 +11,14 @@ class AskChef extends Component {
     this.state = { recipes: [] };
   }
 
-  handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const results = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL2}/recipes?ingredients=${e.target.ingredient.value}`
-      );
-      this.setState({ recipes: results.data });
-      console.log(this.state.recipes);
-    } catch (err) {
-      console.log(err);
-      this.setState({ results: [] });
-    }
-    if (this.state.recipes.length === 0) {
-      alert('No results found found the entered ingredients!');
-    }
-  };
+  setRecipes = (recipes) => {
+    this.setState({recipes});
+  }
 
   render() {
     return (
       <div>
-        <Card border="dark" id="askchef-card">
-          <Card.Header id="askchef-header" style={{ fontSize: '2rem' }}>
-            Recipe Search
-          </Card.Header>
-          <Card.Body id="askchef-body" style={{ textAlign: 'center' }}>
-            <Card.Title className="mb-4" style={{ fontSize: '1.7rem' }} id="askchef-title">
-              Let the chef know what ingredients you have
-            </Card.Title>
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group className="mb-3" controlId="formBasic">
-                <Form.Label style={{ float: 'left', fontSize: '1.3rem' }}>Ingredients</Form.Label>
-                <Form.Control name="ingredient" type="text" placeholder="Enter Ingredients, seperated by a comma" />
-              </Form.Group>
-              <Button variant="success" style={{ float: 'left' }} type="submit">
-                Submit
-              </Button>
-            </Form>
-          </Card.Body>
-          <Card.Footer id="askchef-footer"></Card.Footer>
-        </Card>
+        <SearchTabs setRecipes={this.setRecipes} recipes={this.state.recipes} />
         {this.state.recipes.length > 0 && (
           <Container>
             {this.state.recipes.map((recipe, index) => {
