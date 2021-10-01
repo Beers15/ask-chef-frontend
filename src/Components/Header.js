@@ -20,19 +20,19 @@ class Header extends Component {
           <Nav className="ml-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
             <NavItem>
               <Link to="/" className="nav-link">
-                Home
+                <span className="link">Home</span>
               </Link>
             </NavItem>
             {this.props.auth0.isAuthenticated ? (
               <>
                 <NavItem>
                   <Link to="/askchef" className="nav-link">
-                    Ask Chef
+                    <span className="link">Ask Chef</span>
                   </Link>
                 </NavItem>
                 <NavItem>
                   <Link to="/profile" className="nav-link">
-                    Profile
+                    <span className="link">Profile</span>
                   </Link>
                 </NavItem>
               </>
@@ -41,10 +41,10 @@ class Header extends Component {
             )}
             <NavItem>
               <Link to="/about" className="nav-link">
-                About Us
+                <span className="link">About Us</span>
               </Link>
             </NavItem>
-            <NavItem>{this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}</NavItem>
+            <NavItem className="log-btn">{this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />}</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -1,15 +1,10 @@
 import { Component } from 'react';
 import LandingCarousel from './LandingCarousel';
-import MissionStatement from './MissionStatement';
+import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-
+import MissionStatement from './MissionStatement';
 import axios from 'axios';
-
-
-
-
-import SearchTabs from './SearchTabs';
 
 export default class Landing extends Component {
   constructor(props) {
@@ -22,7 +17,7 @@ export default class Landing extends Component {
   componentDidMount = async () => {
     try {
       const results = await axios.get(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SPOONACULAR_KEY}&number=5`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SPOONACULAR_KEY}&number=9`
       );
       const landingRecipes = results.data.recipes;
       this.setState({ landingRecipes });
@@ -35,8 +30,12 @@ export default class Landing extends Component {
     return (
       <Container id="landing-container">
         <Row>
+          <Card id="landing-card">
+            <Card.Body>
+              <LandingCarousel landingRecipes={this.state.landingRecipes} />
+            </Card.Body>
+          </Card>
           <MissionStatement />
-          <LandingCarousel landingRecipes={this.state.landingRecipes} />
         </Row>
       </Container>
     );
