@@ -9,7 +9,7 @@ const LogoutButton = () => {
 
   return (
     <Button className="m-2" variant="success" onClick={() => logout({ returnTo: window.location.origin })}>
-      <span className="log-btn-txt">Log Out</span>
+      <span className="log-btn-txt">Logout</span>
     </Button>
   );
 };

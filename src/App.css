@@ -60,7 +60,7 @@ p {
 
 #search-form-background {
   object-fit: cover;
-  height: 500px;
+  object-position: top;
 }
 
 #search-tabs {
