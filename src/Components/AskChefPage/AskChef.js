@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import RecipeRow from './RecipeRow';
-import Container from 'react-bootstrap/Container';
+import RecipeCard from '../RecipeCard';
 import SearchTabs from './SearchTabs';
 import { withAuth0 } from '@auth0/auth0-react';
 
@@ -19,22 +18,21 @@ class AskChef extends Component {
     return (
       <div>
         <SearchTabs setRecipes={this.setRecipes} recipes={this.state.recipes} />
-        {this.state.recipes.length > 0 && (
-          <Container>
-            {this.state.recipes.map((recipe, index) => {
-              if (index % 3 === 0) {
+        <div className="result-card-container">
+          {this.state.recipes.length > 0 && (
+            <>
+              {this.state.recipes.map((recipe) => {
                 return (
-                  <RecipeRow
-                    addRecipe={this.addRecipe}
+                  <RecipeCard
                     isProfileCardRow={false}
                     key={recipe.id}
-                    recipes={this.state.recipes.slice(index, index + 3)}
+                    recipe={recipe}
                   />
                 );
-              } else return null;
-            })}
-          </Container>
-        )}
+              })}
+            </>
+          )}
+        </div>
       </div>
     );
   }

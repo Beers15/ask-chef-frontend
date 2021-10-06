@@ -50,8 +50,6 @@ class RecipeCard extends Component {
   };
 
   onUpdateClick = async (recipeToUpdate) => {
-    console.log('test');
-    console.log(recipeToUpdate);
     try {
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_URL}/recipes/${recipeToUpdate._id}`,
@@ -68,21 +66,23 @@ class RecipeCard extends Component {
   render() {
     return (
       <>
-        <Card id="recipe-card" className="m-2" style={{ width: '24rem' }}>
+        <Card id="recipe-card" className="m-2" style={{ width: '24rem', minWidth: '24rem' }}>
           <Card.Title id="recipe-card-title">{this.props.recipe.title}</Card.Title>
           <Card.Img variant="top" src={this.props.recipe.image} />
           <Card.Body>
             <Card.Text id="recipe-card-steps"></Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem className="recipe-card-list-item">
-              <h3>Needed:</h3>
-              <ul>
-                {this.props.recipe.missedIngredients.map((missed, idx) => {
-                  return <li key={idx}>{missed.name}</li>;
-                })}
-              </ul>
-            </ListGroupItem>
+            {this.props.recipe.missedIngredients &&
+              <ListGroupItem className="recipe-card-list-item">
+                <h3>Needed:</h3>
+                <ul>
+                  {this.props.recipe.missedIngredients.map((missed, idx) => {
+                    return <li key={idx}>{missed.name}</li>;
+                  })}
+                </ul>
+              </ListGroupItem>
+            }
             <ListGroupItem className="recipe-card-list-item">
               <h3>Instructions:</h3>
               <ol>

@@ -3,7 +3,7 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
 import IngredientSearchCard from './IngredientSearchCard';
 import QuestionsSearchCard from './QuestionsSearchCard';
 import Card from 'react-bootstrap/Card';
-import background from '../img/search-tab-background_calum-lewis-vA1L1jRTM70-unsplash.jpg';
+import background from '../../img/search-tab-background_calum-lewis-vA1L1jRTM70-unsplash.jpg';
 
 class SearchTabs extends Component {
   constructor(props) {

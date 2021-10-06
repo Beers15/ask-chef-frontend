@@ -2,28 +2,24 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-//import axios from 'axios';
+import axios from 'axios';
 
 class QuestionsSearchCard extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e.target.type.value);
-    console.log(e.target.cuisine.value);
-    console.log(e.target.diet.value);
-    console.log(e.target.intolerences.value);
-    console.log(e.target.equipment.value);
-    // try {
-    //   const results = await axios.get(
-    //     `${process.env.REACT_APP_BACKEND_URL2}/recipes/complex-search?cuisine=${e.target.cuisine.value}&diet=${e.target.diet.value}&intolerences=${e.target.intolerences.value}&equipment=${e.target.equipment.value}&type=${e.target.type.value}`
-    //   );
-    //   this.props.setRecipes(results.data);
-    // } catch (err) {
-    //   console.log(err);
-    //   this.props.setRecipes([]);
-    // }
-    // if(this.props.recipes.length === 0) {
-    //   alert('No results found found the entered ingredients!');
-    // }
+
+    try {
+      const results = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/recipes/complex-search?cuisine=${e.target.cuisine.value}&diet=${e.target.diet.value}&intolerences=${e.target.intolerences.value}&equipment=${e.target.equipment.value}&type=${e.target.type.value}`
+      );
+      this.props.setRecipes(results.data);
+    } catch (err) {
+      console.log(err);
+    }
+    if(this.props.recipes.length === 0) {
+      this.props.setRecipes([]);
+      alert('No results found found the entered ingredients!');
+    }
   };
 
   render() {
@@ -42,10 +38,12 @@ class QuestionsSearchCard extends Component {
                 <Form.Label style={{ float: 'left', fontSize: '1.3rem' }}>What meal type are you looking for?</Form.Label>
                 <Form.Select className="mb-3" aria-label="cuisine select" name="type">
                   <option value="none">Select an option</option>
+                  <option value="snack">snack</option>
+                  <option value="drink">drink</option>
                   <option value="main course">main course</option>
+                  <option value="appetizer">appetizer</option>
                   <option value="side dish">side dish</option>
                   <option value="dessert">dessert</option>
-                  <option value="appetizer">appetizer</option>
                   <option value="salad">salad</option>
                   <option value="bread">bread</option>
                   <option value="breakfast">breakfast</option>
@@ -54,8 +52,6 @@ class QuestionsSearchCard extends Component {
                   <option value="sauce">sauce</option>
                   <option value="marinade">marinade</option>
                   <option value="fingerfood">fingerfood</option>
-                  <option value="snack">snack</option>
-                  <option value="drink">drink</option>
                 </Form.Select>
 
                 <Form.Label style={{ float: 'left', fontSize: '1.3rem' }}>What kind of Cuisine would you like?</Form.Label>

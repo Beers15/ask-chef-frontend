@@ -46,7 +46,7 @@ class Profile extends Component {
     return (
       <div>
         <ProfileCard />
-        <Container>
+        <Container fluid>
           {this.state.recipes.map((recipe, index) => {
             if (index % 3 === 0) {
               return (
