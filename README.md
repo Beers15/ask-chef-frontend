@@ -5,7 +5,7 @@
 ### Site deployed on Netlify [here]( https://ask-chef.netlify.app)
 **Author**: Alexander Beers
 
-**Version**: 2.0.2
+**Version**: 2.1.0
 
 ## Overview
 Ask Chef is a website that help users come up with ideas for meal choices and recipes based off the data input by the user. Data that the user can input to receive corresponding recipes will include a list of ingredients, answers to provided prompts, nutrient values, and more. Results can be saved to a customizable profile where they can be modified as desired.
@@ -17,6 +17,10 @@ Ask Chef is a website that help users come up with ideas for meal choices and re
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 ## Change Log (Starting with v2.0.0)
+
+10-6-2021: 3:30pm - Link question search form with Ask-Chef api. User can now recieve recipes from question form data.
+
+10-5-2021: 1:00pm - Add question search recipe form to SearchTabs Component that retrieves desired cuisine type, meal type, dietary restiction, diet type, and cookware data from user.
 
 10-1-2021: 11:00am - Landing page carousel now displays multiple items at once and has added functionality. Homepage restyled.
 
@@ -31,4 +35,3 @@ Patrick Laurion, Antoine Charette, and Rachel Freeland were the other developers
 The front-end and back-end for that version can be found at 
 
 [https://github.com/Team-Burrito-Supreme/ask-chef-frontend](https://github.com/Team-Burrito-Supreme/ask-chef-frontend) and [https://github.com/Team-Burrito-Supreme/ask-chef-backend](https://github.com/Team-Burrito-Supreme/ask-chef-backend)
-

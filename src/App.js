@@ -1,10 +1,10 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './Components/Header';
-import AskChef from './Components/AskChef';
+import AskChef from './Components/AskChefPage/AskChef';
 import About from './Components/About';
 import Profile from './Components/Profile';
-import Landing from './Components/Landing';
+import Landing from './Components/LandingPage/Landing';
 import { Component } from 'react';
 import { withAuth0 } from '@auth0/auth0-react';
 import IsLoadingAndError from './IsLoadingAndError';

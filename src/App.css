@@ -50,6 +50,12 @@ p {
   text-align: justify;
 }
 
+.result-card-container {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
 #search-tab-container {
   width: 38rem;
   margin-left: auto;
@@ -60,7 +66,7 @@ p {
 
 #search-form-background {
   object-fit: cover;
-  height: 500px;
+  object-position: top;
 }
 
 #search-tabs {

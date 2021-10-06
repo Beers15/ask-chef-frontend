@@ -37,7 +37,7 @@ class UpdateModal extends Component {
               <Form.Control
                 type="string"
                 name="missedIngredients"
-                defaultValue={this.props.recipe.missedIngredients.map((missed) => missed.name).join(',')}
+                defaultValue={this.props.recipe.missedIngredients && this.props.recipe.missedIngredients.map((missed) => missed.name).join(',') }
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="floatingTextArea">
