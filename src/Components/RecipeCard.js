@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-// import ListGroup from 'react-bootstrap/ListGroup';
-// import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import Fade from 'react-bootstrap/Fade';
 import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
@@ -16,6 +14,7 @@ class RecipeCard extends Component {
       showUpdateModal: false,
       showDetailsModal: false,
       open: false,
+      summaryDisplay: 'block'
     };
   }
 
@@ -74,7 +73,7 @@ class RecipeCard extends Component {
   render() {
     return (
       <div id="recipe-card-container">
-        <Card id="recipe-card" className="m-2" style={{ width: '24rem', minWidth: '24rem' }}>
+        <Card id="recipe-card" className="m-2" style={{ width: '24rem', maxWidth: '24rem' }}>
           <Card.Title id="recipe-card-title">{this.props.recipe.title}</Card.Title>
           <Card.Img variant="top" src={this.props.recipe.image} />
           <Card.Body>
@@ -121,8 +120,12 @@ class RecipeCard extends Component {
             </Card.Body>
           )}
         </Card>
-        <Fade in={this.state.open}>
-          <div className="summary-txt" dangerouslySetInnerHTML={{__html: this.props.recipe.summary}}></div>
+        <Fade
+          in={this.state.open}
+          onEnter={() => this.setState({ summaryDisplay: 'block' })}
+          onExit={() => this.setState({ summaryDisplay: 'none' })}
+        >
+          <div style={{ display: this.state.summaryDisplay}} className="summary-txt" dangerouslySetInnerHTML={{__html: this.props.recipe.summary}}></div>
         </Fade>
         <UpdateModal
           onUpdateClick={this.onUpdateClick}
