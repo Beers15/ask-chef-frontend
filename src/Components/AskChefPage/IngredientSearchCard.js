@@ -14,6 +14,7 @@ class IngredientSearchCard extends Component {
         `${process.env.REACT_APP_BACKEND_URL}/recipes?ingredients=${e.target.ingredient.value}`
       );
       this.props.setRecipes(results.data);
+      console.log(results.data[0]);
     } catch (err) {
       console.log(err);
     }

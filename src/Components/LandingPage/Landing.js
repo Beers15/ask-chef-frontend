@@ -17,8 +17,8 @@ export default class Landing extends Component {
   componentDidMount = async () => {
     try {
       const results = await axios.get(
-         `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SPOONACULAR_KEY}&number=9`
-       );
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SPOONACULAR_KEY}&number=9`
+      );
       const landingRecipes = results.data.recipes;
       this.setState({ landingRecipes });
     } catch (err) {
