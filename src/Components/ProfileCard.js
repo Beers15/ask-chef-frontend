@@ -5,8 +5,8 @@ import { withAuth0 } from '@auth0/auth0-react';
 class ProfileCard extends Component {
   render() {
     return (
-      <Card border="dark" id="profile-card">
-        <Card.Header className="card-header" style={{ fontSize: '2rem' }}>
+      <Card border="dark" id="profile-card" style={{ maxHeight: '36rem' }}>
+        <Card.Header className="card-header" style={{ fontSize: '2rem'}}>
           Profile Info
         </Card.Header>
         <Card.Img id="profile-img" variant="top" src={this.props.auth0.user.picture} alt="user" />

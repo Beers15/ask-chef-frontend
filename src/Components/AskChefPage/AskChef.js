@@ -16,22 +16,24 @@ class AskChef extends Component {
 
   render() {
     return (
-      <div>
-        <SearchTabs setRecipes={this.setRecipes} recipes={this.state.recipes} />
-        <div className="result-card-container">
-          {this.state.recipes.length > 0 && (
-            <>
-              {this.state.recipes.map((recipe) => {
-                return (
-                  <RecipeCard
-                    isProfileCardRow={false}
-                    key={recipe.id}
-                    recipe={recipe}
-                  />
-                );
-              })}
-            </>
-          )}
+      <div id="ask-chef-container">
+        <div className={this.state.recipes.length > 0 ? 'content-flex-container' : ''}>
+          <SearchTabs className="col-md-3" setRecipes={this.setRecipes} recipes={this.state.recipes} />
+          <div className={this.state.recipes.length > 0 ? 'results-flex-container' : ''}>
+            {this.state.recipes.length > 0 && (
+              <>
+                {this.state.recipes.map((recipe) => {
+                  return (
+                    <RecipeCard
+                      isProfileCardRow={false}
+                      key={recipe.id}
+                      recipe={recipe}
+                    />
+                  );
+                })}
+              </>
+            )}
+          </div>
         </div>
       </div>
     );

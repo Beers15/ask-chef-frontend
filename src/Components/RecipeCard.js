@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/ListGroup';
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
+// import ListGroup from 'react-bootstrap/ListGroup';
+// import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import Fade from 'react-bootstrap/Fade';
 import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import UpdateModal from './UpdateModal';
+import DetailsModal from './DetailsModal';
 
 class RecipeCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false,
+      showUpdateModal: false,
+      showDetailsModal: false,
+      open: false,
     };
   }
 
-  toggleModal = () => {
-    this.setState({ showModal: !this.state.showModal });
+  toggleUpdateModal = () => {
+    this.setState({ showUpdateModal: !this.state.showUpdateModal });
+  };
+
+  toggleDetailsModal = () => {
+    this.setState({ showDetailsModal: !this.state.showDetailsModal });
   };
 
   getConfig = async () => {
@@ -59,42 +67,46 @@ class RecipeCard extends Component {
       this.props.updatePage();
       this.toggleModal();
     } catch (err) {
-      console.log(err + 'Error Message Here');
+      console.log(err);
     }
   };
 
   render() {
     return (
-      <>
+      <div id="recipe-card-container">
         <Card id="recipe-card" className="m-2" style={{ width: '24rem', minWidth: '24rem' }}>
           <Card.Title id="recipe-card-title">{this.props.recipe.title}</Card.Title>
           <Card.Img variant="top" src={this.props.recipe.image} />
           <Card.Body>
-            <Card.Text id="recipe-card-steps"></Card.Text>
+            <Button variant="secondary" onClick={() => this.setState({open: !this.state.open})} aria-controls="example-fade-text" aria-expanded={this.state.open}>
+              View Summary
+            </Button>
+            <Button onClick={this.toggleDetailsModal} className="m-2" variant="secondary">
+              View Recipe Details
+            </Button>
           </Card.Body>
-          <ListGroup className="list-group-flush">
-            {this.props.recipe.missedIngredients &&
-              <ListGroupItem className="recipe-card-list-item">
-                <h3>Needed:</h3>
-                <ul>
-                  {this.props.recipe.missedIngredients.map((missed, idx) => {
-                    return <li key={idx}>{missed.name}</li>;
-                  })}
-                </ul>
-              </ListGroupItem>
-            }
+
+          {/* {this.props.recipe.missedIngredients &&
             <ListGroupItem className="recipe-card-list-item">
-              <h3>Instructions:</h3>
-              <ol>
-                {this.props.recipe.steps.map((step, idx) => {
-                  return <li key={idx}>{step}</li>;
+              <h3>Needed:</h3>
+              <ul>
+                {this.props.recipe.missedIngredients.map((missed, idx) => {
+                  return <li key={idx}>{missed.name}</li>;
                 })}
-              </ol>
+              </ul>
             </ListGroupItem>
-          </ListGroup>
+          } */}
+          {/* <ListGroupItem className="recipe-card-list-item">
+            <h3>Instructions:</h3>
+            <ol>
+              {this.props.recipe.steps && this.props.recipe.steps.map((step, idx) => {
+                return <li key={idx}>{step}</li>;
+              })}
+            </ol>
+          </ListGroupItem> */}
           {this.props.isProfileCard ? (
             <Card.Body id="recipe-card-body">
-              <Button onClick={this.toggleModal} className="m-2" variant="success">
+              <Button onClick={this.toggleUpdateModal} className="m-2" variant="success">
                 Update
               </Button>
               <Button onClick={this.onDeleteClick} variant="danger">
@@ -109,13 +121,21 @@ class RecipeCard extends Component {
             </Card.Body>
           )}
         </Card>
+        <Fade in={this.state.open}>
+          <div className="summary-txt" dangerouslySetInnerHTML={{__html: this.props.recipe.summary}}></div>
+        </Fade>
         <UpdateModal
           onUpdateClick={this.onUpdateClick}
-          showModal={this.state.showModal}
-          toggleModal={this.toggleModal}
+          showModal={this.state.showUpdateModal}
+          toggleModal={this.toggleUpdateModal}
           recipe={this.props.recipe}
         />
-      </>
+        <DetailsModal
+          showModal={this.state.showDetailsModal}
+          toggleModal={this.toggleDetailsModal}
+          recipe={this.props.recipe}
+        />
+      </div>
     );
   }
 }
