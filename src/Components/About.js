@@ -15,6 +15,27 @@ export default class About extends Component {
           <Carousel.Item>
             <img className="d-block w-100" src={blank} alt="carousel-backing" />
             <Carousel.Caption>
+              <img className="about" src={alex} alt="alex" />
+              <h3>Alexander Beers</h3>
+              <article>
+                <p>
+                  Hello there, I'm a graduate from San Francisco State University who obtained my Bachelor's degree in
+                  Computer Science. After some time as a Radio Frequency technician, I'm switching careers and
+                  transitioning into the tech industry to pursue my goal of becoming a web developer. When I'm not
+                  coding, I enjoy fine dining, gaming, and following local sports teams. Thank you for using our site!
+                </p>
+                <a className="about" href="https://www.linkedin.com/in/alexander-r-beers/">
+                  LinkedIn
+                </a>
+                <a className="about" href="https://github.com/Beers15">
+                  GitHub
+                </a>
+              </article>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100" src={blank} alt="carousel-backing" />
+            <Carousel.Caption>
               <img className="about" src={antoine} alt="antoine" />
               <h3>Antoine Charette</h3>
               <article>
@@ -76,27 +97,6 @@ export default class About extends Component {
                   LinkedIn
                 </a>
                 <a className="about" href="https://github.com/plaurion1989">
-                  GitHub
-                </a>
-              </article>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block w-100" src={blank} alt="carousel-backing" />
-            <Carousel.Caption>
-              <img className="about" src={alex} alt="alex" />
-              <h3>Alexander Beers</h3>
-              <article>
-                <p>
-                  Hello there, I'm a graduate from San Francisco State University who obtained my Bachelor's degree in
-                  Computer Science. After some time as a Radio Frequency technician, I'm switching careers and
-                  transitioning into the tech industry to pursue my goal of becoming a web developer. When I'm not
-                  coding, I enjoy fine dining, gaming, and following local sports teams. Thank you for using our site!
-                </p>
-                <a className="about" href="https://www.linkedin.com/in/alexander-r-beers/">
-                  LinkedIn
-                </a>
-                <a className="about" href="https://github.com/Beers15">
                   GitHub
                 </a>
               </article>
