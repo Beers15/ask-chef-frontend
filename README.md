@@ -5,7 +5,7 @@
 ### Site deployed on Netlify [here]( https://ask-chef.netlify.app)
 **Author**: Alexander Beers
 
-**Version**: 2.1.0
+**Version**: 2.1.1
 
 ## Overview
 Ask Chef is a website that help users come up with ideas for meal choices and recipes based off the data input by the user. Data that the user can input to receive corresponding recipes will include a list of ingredients, answers to provided prompts, nutrient values, and more. Results can be saved to a customizable profile where they can be modified as desired.
@@ -17,6 +17,8 @@ Ask Chef is a website that help users come up with ideas for meal choices and re
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 ## Change Log (Starting with v2.0.0)
+
+10-11-2021: 12:00pm - Add Detailed Modal to recipe cards that displays the various info that's fetched from ask-chef forms.
 
 10-6-2021: 3:30pm - Link question search form with Ask-Chef api. User can now recieve recipes from question form data.
 

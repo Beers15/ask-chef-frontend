@@ -23,6 +23,10 @@ class Profile extends Component {
     return config;
   };
 
+  toggleModal = () => {
+    this.setState({ showModal: !this.state.showModal });
+  }
+
   componentDidMount() {
     this.updatePage();
   }
@@ -51,7 +55,8 @@ class Profile extends Component {
               {this.state.recipes.map((recipe) => {
                 return (
                   <RecipeCard
-                    isProfileCardRow={true}
+                    updatePage={this.updatePage}
+                    isProfileCard={true}
                     key={recipe.id}
                     recipe={recipe}
                   />
