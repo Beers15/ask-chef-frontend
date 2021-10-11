@@ -14,7 +14,7 @@ class RecipeCard extends Component {
       showUpdateModal: false,
       showDetailsModal: false,
       open: false,
-      summaryDisplay: 'block'
+      summaryDisplay: 'none'
     };
   }
 
@@ -84,25 +84,6 @@ class RecipeCard extends Component {
               View Recipe Details
             </Button>
           </Card.Body>
-
-          {/* {this.props.recipe.missedIngredients &&
-            <ListGroupItem className="recipe-card-list-item">
-              <h3>Needed:</h3>
-              <ul>
-                {this.props.recipe.missedIngredients.map((missed, idx) => {
-                  return <li key={idx}>{missed.name}</li>;
-                })}
-              </ul>
-            </ListGroupItem>
-          } */}
-          {/* <ListGroupItem className="recipe-card-list-item">
-            <h3>Instructions:</h3>
-            <ol>
-              {this.props.recipe.steps && this.props.recipe.steps.map((step, idx) => {
-                return <li key={idx}>{step}</li>;
-              })}
-            </ol>
-          </ListGroupItem> */}
           {this.props.isProfileCard ? (
             <Card.Body id="recipe-card-body">
               <Button onClick={this.toggleUpdateModal} className="m-2" variant="success">

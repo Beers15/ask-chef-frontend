@@ -11,11 +11,21 @@ body {
   min-height: 800px;
 }
 
-.card-header,
-.card-footer,
-#update-modal-header,
-#update-modal-footer {
+button[aria-expanded='true'] {
   background: rgba(93, 104, 89, 0.75) !important;
+  color: white !important;
+}
+
+button[aria-expanded]
+
+.card-header,
+.card-footer {
+  background: rgba(93, 104, 89, 0.75);
+  color: white;
+}
+
+.modal-header, .modal-footer {
+  background: rgba(93, 104, 89, 0.75);
   color: white;
 }
 

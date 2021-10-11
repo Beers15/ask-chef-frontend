@@ -18,12 +18,13 @@ class UpdateModal extends Component {
       unusedIngredients: this.props.recipe.unusedIngredients,
       email: this.props.recipe.email,
     });
+    this.props.toggleModal();
   };
 
   render() {
     return (
       <Modal show={this.props.showModal}>
-        <Modal.Header id="update-modal-header" onClick={this.props.toggleModal} closeButton>
+        <Modal.Header className="modal-header" onClick={this.props.toggleModal} closeButton>
           <h2>Update This Recipe</h2>
         </Modal.Header>
         <Modal.Body id="update-modal-body">
@@ -49,8 +50,7 @@ class UpdateModal extends Component {
             </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer id="update-modal-footer">
-        </Modal.Footer>
+        <Modal.Footer className="modal-footer"></Modal.Footer>
       </Modal>
     );
   }
