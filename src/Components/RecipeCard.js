@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Fade from 'react-bootstrap/Fade';
@@ -16,7 +17,25 @@ class RecipeCard extends Component {
       open: false,
       summaryDisplay: 'none'
     };
+
   }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleClickOutside, true);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClickOutside, true);
+  }
+
+  handleClickOutside = (e) => {
+    //detects if summary is displayed and user clicks outside of the card, if so remove summary display
+    const recipeCard = ReactDOM.findDOMNode(this);
+    if((!recipeCard.contains(e.target) || !recipeCard) && this.state.open) {
+      this.setState({open: false});
+    }
+  }
+
 
   toggleUpdateModal = () => {
     this.setState({ showUpdateModal: !this.state.showUpdateModal });
@@ -72,7 +91,7 @@ class RecipeCard extends Component {
 
   render() {
     return (
-      <div id="recipe-card-container">
+      <div id="recipe-card-container" ref={this.wrapperRef}>
         <Card id="recipe-card" className="m-2" style={{ width: '24rem', maxWidth: '24rem' }}>
           <Card.Title id="recipe-card-title">{this.props.recipe.title}</Card.Title>
           <Card.Img variant="top" src={this.props.recipe.image} />

@@ -30,7 +30,7 @@ class SearchTabs extends Component {
                 <QuestionsSearchCard setRecipes={this.props.setRecipes} recipes={this.props.recipes} />
               </TabContent>
               <TabContent for="tab3">
-                Nutrition form here
+                <h2 style={{backgroundColor: 'grey',color: 'white'}}>Nutrition Search is Coming Soon!</h2>
               </TabContent>
             </Tabs>
           </Card.ImgOverlay>

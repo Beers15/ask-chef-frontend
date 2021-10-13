@@ -16,11 +16,9 @@ button[aria-expanded='true'] {
   color: white !important;
 }
 
-button[aria-expanded]
-
 .card-header,
 .card-footer {
-  background: rgba(93, 104, 89, 0.75);
+  background: rgba(93, 104, 89, 0.75) !important;
   color: white;
 }
 
@@ -70,7 +68,8 @@ p {
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap;
-  width: 60%;
+  max-width: 1780px;
+  flex-basis: 70%;
 }
 
 #search-tab-container {

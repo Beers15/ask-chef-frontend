@@ -28,7 +28,7 @@ class IngredientSearchCard extends Component {
     return (
       <div>
         <Card border="dark" id="askchef-card">
-          <Card.Header className="card-header" style={{ fontSize: '2rem' }}>
+          <Card.Header id="askchef-header" >
             Search by Ingredients
           </Card.Header>
           <Card.Body style={{ textAlign: 'center' }}>
