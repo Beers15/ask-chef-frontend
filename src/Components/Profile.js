@@ -59,6 +59,7 @@ class Profile extends Component {
                     isProfileCard={true}
                     key={recipe.id}
                     recipe={recipe}
+                    triggerFlash={this.props.triggerFlash}
                   />
                 );
               })}

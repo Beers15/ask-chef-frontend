@@ -12,13 +12,15 @@ class QuestionsSearchCard extends Component {
       const results = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/recipes/complex-search?cuisine=${e.target.cuisine.value}&diet=${e.target.diet.value}&intolerences=${e.target.intolerences.value}&equipment=${e.target.equipment.value}&type=${e.target.type.value}`
       );
+      if(results.data && results.data.length === 0) {
+        this.props.triggerFlash('The chef is stumped! No recipes were found for the given input.', 'danger');
+      }
       this.props.setRecipes(results.data);
     } catch (err) {
       console.log(err);
     }
     if(this.props.recipes.length === 0) {
       this.props.setRecipes([]);
-      alert('No results found found the entered ingredients!');
     }
   };
 

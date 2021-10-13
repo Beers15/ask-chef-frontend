@@ -24,13 +24,13 @@ class SearchTabs extends Component {
                 <TabLink onClick={() => this.setState({height: 480})} activeClassName="search-tab-active" className="search-tab" to="tab3">Nutrition</TabLink>
               </div>
               <TabContent for="tab1">
-                <IngredientSearchCard setRecipes={this.props.setRecipes} recipes={this.props.recipes} />
+                <IngredientSearchCard triggerFlash={this.props.triggerFlash} setRecipes={this.props.setRecipes} recipes={this.props.recipes} />
               </TabContent>
               <TabContent for="tab2">
-                <QuestionsSearchCard setRecipes={this.props.setRecipes} recipes={this.props.recipes} />
+                <QuestionsSearchCard triggerFlash={this.props.triggerFlash} setRecipes={this.props.setRecipes} recipes={this.props.recipes} />
               </TabContent>
               <TabContent for="tab3">
-                Nutrition form here
+                <h2 style={{backgroundColor: 'grey',color: 'white'}}>Nutrition Search is Coming Soon!</h2>
               </TabContent>
             </Tabs>
           </Card.ImgOverlay>
