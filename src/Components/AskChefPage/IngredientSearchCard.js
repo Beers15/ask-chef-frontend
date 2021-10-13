@@ -13,14 +13,15 @@ class IngredientSearchCard extends Component {
       const results = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/recipes?ingredients=${e.target.ingredient.value}`
       );
+      if(results.data && results.data.length === 0) {
+        this.props.triggerFlash('The chef is stumped! No recipes were found for the given input.', 'danger');
+      }
       this.props.setRecipes(results.data);
-      console.log(results.data[0]);
     } catch (err) {
       console.log(err);
     }
     if(this.props.recipes.length === 0) {
       this.props.setRecipes([]);
-      alert('No results found found the entered ingredients!');
     }
   };
 

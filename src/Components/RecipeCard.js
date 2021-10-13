@@ -8,6 +8,7 @@ import axios from 'axios';
 import UpdateModal from './UpdateModal';
 import DetailsModal from './DetailsModal';
 
+
 class RecipeCard extends Component {
   constructor(props) {
     super(props);
@@ -15,10 +16,12 @@ class RecipeCard extends Component {
       showUpdateModal: false,
       showDetailsModal: false,
       open: false,
-      summaryDisplay: 'none'
+      summaryDisplay: 'none',
+      displayFlashMessage: true,
     };
-
   }
+
+  recipeRef = React.createRef();
 
   componentDidMount() {
     document.addEventListener('click', this.handleClickOutside, true);
@@ -30,12 +33,10 @@ class RecipeCard extends Component {
 
   handleClickOutside = (e) => {
     //detects if summary is displayed and user clicks outside of the card, if so remove summary display
-    const recipeCard = ReactDOM.findDOMNode(this);
-    if((!recipeCard.contains(e.target) || !recipeCard) && this.state.open) {
+    if(this.recipeRef && !this.recipeRef.current.contains(e.target)) {
       this.setState({open: false});
     }
   }
-
 
   toggleUpdateModal = () => {
     this.setState({ showUpdateModal: !this.state.showUpdateModal });
@@ -58,6 +59,7 @@ class RecipeCard extends Component {
   onDeleteClick = async () => {
     try {
       await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/recipes/${this.props.recipe._id}`);
+      this.props.triggerFlash('Recipe deleted.', 'success');
       this.props.updatePage();
     } catch (err) {
       console.log(err);
@@ -69,7 +71,7 @@ class RecipeCard extends Component {
 
     try {
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/recipes`, this.props.recipe, config);
-      alert('Recipe Saved! Happy Cooking!');
+      this.props.triggerFlash('Recipe Saved! Happy Cooking!', 'success');
     } catch (err) {
       console.log(err);
     }
@@ -84,6 +86,7 @@ class RecipeCard extends Component {
       console.log(response.data);
       this.props.updatePage();
       this.toggleModal();
+      this.props.triggerFlash('Recipe update!', 'success');
     } catch (err) {
       console.log(err);
     }
@@ -91,7 +94,7 @@ class RecipeCard extends Component {
 
   render() {
     return (
-      <div id="recipe-card-container" ref={this.wrapperRef}>
+      <div ref={this.recipeRef} id="recipe-card-container">
         <Card id="recipe-card" className="m-2" style={{ width: '24rem', maxWidth: '24rem' }}>
           <Card.Title id="recipe-card-title">{this.props.recipe.title}</Card.Title>
           <Card.Img variant="top" src={this.props.recipe.image} />

@@ -18,7 +18,7 @@ class AskChef extends Component {
     return (
       <div id="ask-chef-container">
         <div className={this.state.recipes.length > 0 ? 'content-flex-container' : ''}>
-          <SearchTabs className="col-md-3" setRecipes={this.setRecipes} recipes={this.state.recipes} />
+          <SearchTabs triggerFlash={this.props.triggerFlash} className="col-md-3" setRecipes={this.setRecipes} recipes={this.state.recipes} />
           <div className={this.state.recipes.length > 0 ? 'results-flex-container' : ''}>
             {this.state.recipes.length > 0 && (
               <>
@@ -28,6 +28,7 @@ class AskChef extends Component {
                       isProfileCardRow={false}
                       key={recipe.id}
                       recipe={recipe}
+                      triggerFlash={this.props.triggerFlash}
                     />
                   );
                 })}
